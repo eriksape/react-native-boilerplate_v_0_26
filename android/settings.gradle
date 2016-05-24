@@ -1,0 +1,3 @@
+rootProject.name = 'domoticap_app'
+
+include ':app'
