@@ -9,6 +9,7 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
+  TextInput,
   View
 } from 'react-native';
 
@@ -16,16 +17,14 @@ class domoticap_app extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
+        <View style={styles.header}></View>
+        <View style={styles.content}>
+          <View style={styles.inputs}>
+            <TextInput style={styles.input}/>
+            <View style={{ borderTopWidth:1.5 }}/>
+            <TextInput style={styles.input}/>
+          </View>
+        </View>
       </View>
     );
   }
@@ -34,20 +33,28 @@ class domoticap_app extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
+  header: {
+    flex: 1,
+    backgroundColor:'black'
+  },
+  content: {
+    flex: 1,
+  },
+  inputs: {
     margin: 10,
+    // borderTopLeftRadius: 4,
+    // borderTopRightRadius: 4,
+    // borderTopWidth: 1.5,
+    // borderLeftWidth:1.5,
+    // borderRightWidth:1.5,
+    borderRadius:6,
+    borderWidth:1.5
+
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+  input: {
+    height: 30,
+  }
 });
 
 AppRegistry.registerComponent('domoticap_app', () => domoticap_app);
