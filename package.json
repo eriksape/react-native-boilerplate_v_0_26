@@ -1,13 +1,16 @@
 {
-  "name": "domoticap_app",
+  "name": "rnboilerplate",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start"
   },
   "dependencies": {
+    "apsl-react-native-button": "^2.5.0",
+    "immutable": "^3.8.1",
     "lodash": "^4.13.1",
-    "react": "^15.0.2",
+    "path-to-regexp": "^1.5.0",
+    "react": "15.0.2",
     "react-native": "^0.26.2",
     "react-native-gifted-spinner": "0.0.4",
     "react-native-navbar": "^1.5.0",
@@ -15,7 +18,13 @@
     "react-native-simple-store": "^1.0.1",
     "react-native-simpledialog-android": "^1.0.5",
     "react-native-vector-icons": "^2.0.2",
+    "react-redux": "^4.4.5",
+    "redux": "^3.5.2",
+    "redux-thunk": "^2.1.0",
     "tcomb-form-native": "^0.5.0",
     "validate.js": "^0.10.0"
+  },
+  "devDependencies": {
+    "rnpm-plugin-upgrade": "^0.26.0"
   }
 }

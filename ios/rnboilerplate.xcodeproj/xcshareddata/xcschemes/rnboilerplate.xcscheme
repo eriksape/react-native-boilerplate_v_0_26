@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "domoticap_app.app"
-               BlueprintName = "domoticap_app"
-               ReferencedContainer = "container:domoticap_app.xcodeproj">
+               BuildableName = "rnboilerplate.app"
+               BlueprintName = "rnboilerplate"
+               ReferencedContainer = "container:rnboilerplate.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "domoticap_appTests.xctest"
-               BlueprintName = "domoticap_appTests"
-               ReferencedContainer = "container:domoticap_app.xcodeproj">
+               BuildableName = "rnboilerplateTests.xctest"
+               BlueprintName = "rnboilerplateTests"
+               ReferencedContainer = "container:rnboilerplate.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "domoticap_appTests.xctest"
-               BlueprintName = "domoticap_appTests"
-               ReferencedContainer = "container:domoticap_app.xcodeproj">
+               BuildableName = "rnboilerplateTests.xctest"
+               BlueprintName = "rnboilerplateTests"
+               ReferencedContainer = "container:rnboilerplate.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "domoticap_app.app"
-            BlueprintName = "domoticap_app"
-            ReferencedContainer = "container:domoticap_app.xcodeproj">
+            BuildableName = "rnboilerplate.app"
+            BlueprintName = "rnboilerplate"
+            ReferencedContainer = "container:rnboilerplate.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -77,9 +77,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "domoticap_app.app"
-            BlueprintName = "domoticap_app"
-            ReferencedContainer = "container:domoticap_app.xcodeproj">
+            BuildableName = "rnboilerplate.app"
+            BlueprintName = "rnboilerplate"
+            ReferencedContainer = "container:rnboilerplate.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -96,9 +96,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "domoticap_app.app"
-            BlueprintName = "domoticap_app"
-            ReferencedContainer = "container:domoticap_app.xcodeproj">
+            BuildableName = "rnboilerplate.app"
+            BlueprintName = "rnboilerplate"
+            ReferencedContainer = "container:rnboilerplate.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

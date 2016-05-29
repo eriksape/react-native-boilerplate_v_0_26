@@ -13,7 +13,7 @@ import {
   View
 } from 'react-native';
 
-class domoticap_app extends Component {
+class rnboilerplate extends Component {
   render() {
     return (
       <View style={styles.container}>
@@ -57,4 +57,4 @@ const styles = StyleSheet.create({
   }
 });
 
-AppRegistry.registerComponent('domoticap_app', () => domoticap_app);
+AppRegistry.registerComponent('rnboilerplate', () => rnboilerplate);
