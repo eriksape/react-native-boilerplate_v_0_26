@@ -3,79 +3,21 @@
  *  Display startup screen and
  *  getSessionTokenAtStartup which will navigate upon completion
  *
- *
- *
  */
-'use strict';
-/*
- * ## Imports
- *
- * Imports from redux
- */
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 
-/**
- * Immutable Map
- */
-import {Map} from 'immutable';
-
-/**
- * Project actions
- */
-// import * as authActions from '../reducers/auth/authActions';
-import * as clientdeviceActions from '../reducers/clientdevice/clientdeviceActions';
-// import * as globalActions from '../reducers/global/globalActions';
-
-/**
- * The components we need from ReactNative
- */
 import React from 'react'
 import {
   StyleSheet,
   View,
   Text
 }
-from 'react-native';
-
-/**
- * ## Actions
- * 3 of our actions will be available as ```actions```
- */
-const actions = [
-  // authActions,
-  clientdeviceActions,
-  // globalActions
-];
-
-/**
- *  Save that state
- */
-function mapStateToProps(state) {
-  return {
-      ...state
-  };
-};
-
-/**
- * Bind all the functions from the ```actions``` and bind them with
- * ```dispatch```
- */
-function mapDispatchToProps(dispatch) {
-
-  const creators = Map()
-          .merge(...actions)
-          .filter(value => typeof value === 'function')
-          .toObject();
-
-  return {
-    actions: bindActionCreators(creators, dispatch),
-    dispatch
-  };
-}
+from 'react-native'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import { Actions } from 'react-native-router-flux'
 
 
-var styles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     borderTopWidth: 2,
     borderBottomWidth:2,
@@ -87,19 +29,19 @@ var styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold'
   }
-});
+})
 
 /**
  * ## App class
  */
-let App = React.createClass({
+const App = React.createClass({
   /**
    * See if there's a sessionToken from a previous login
    *
    */
   componentDidMount() {
-    debugger
-    //this.props.actions.getSessionToken();
+    Actions.Login()
+    //this.props.actions.getSessionToken()
   },
 
   render() {
@@ -107,11 +49,11 @@ let App = React.createClass({
       <View style={ styles.container }>
         <Text style={ styles.summary }>App Startup Screen</Text>
       </View>
-    );
+    )
   }
-});
+})
 
 /**
  * Connect the properties
  */
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect()(App)

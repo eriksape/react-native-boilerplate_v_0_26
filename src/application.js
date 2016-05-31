@@ -41,6 +41,7 @@ import configureStore from './store/configureStore';
  *
  */
 import App from './containers/App';
+import Login from './modules/login/containers/Login'
 // import Login from './containers/Login';
 // import Logout from './containers/Logout';
 // import Register from './containers/Register';
@@ -143,6 +144,7 @@ export default function native(platform) {
       	  <Router hideNavBar={true}>
       	    <Scene key="root">
       	      <Scene key="App" component={App} title="App" initial={true}></Scene>
+              <Scene key="Login" component={Login} title="Login"></Scene>
       	    </Scene>
       	  </Router>
         </Provider>
