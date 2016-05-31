@@ -21,23 +21,12 @@ const validate = values => {
 
 
 const submit = (values, dispatch) => {
+  return new Promise((resolve, reject) => {
+    dispatch(authActions.verify({
+    body:values,
+    extra:{reject:reject,resolve:resolve}
+  }))})
 
-  debugger
-  fetch('http://localhost:8000/api/auth',{
-    method: 'POST',
-    mode: 'cors',
-    credentials: 'include',
-    headers:     {
-      "Content-type":     "application/json",
-      'X-Requested-With': 'XMLHttpRequest',
-    },
-    body:JSON.stringify(values)
-  })
-      .then((response) => response.json())
-      .then((responseData) => {
-        debugger
-      })
-      .done();
 }
 
 class LoginForm extends React.Component {
