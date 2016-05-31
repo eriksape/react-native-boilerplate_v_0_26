@@ -40,7 +40,7 @@ import configureStore from './store/configureStore';
  * All the top level containers
  *
  */
-import App from './containers/App';
+import firstScreen from './screen';
 import Login from './modules/login/containers/Login'
 // import Login from './containers/Login';
 // import Logout from './containers/Logout';
@@ -143,7 +143,7 @@ export default function native(platform) {
         <Provider store={store}>
       	  <Router hideNavBar={true}>
       	    <Scene key="root">
-      	      <Scene key="App" component={App} title="App" initial={true}></Scene>
+      	      <Scene key="firstScreen" component={firstScreen} title="firstScreen" initial={true}></Scene>
               <Scene key="Login" component={Login} title="Login"></Scene>
       	    </Scene>
       	  </Router>
