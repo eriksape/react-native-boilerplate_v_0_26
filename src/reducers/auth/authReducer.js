@@ -1,26 +1,40 @@
-import auth from '../actions/auth'
-import store from 'react-native-simple-store'
 import {isEqual, isUndefined} from 'lodash'
+import Immutable, {fromJS} from 'immutable'
 
+import auth from './authActions'
+import store from 'react-native-simple-store'
+
+const defaultState = fromJS({
+  errors: {},
+  loging: false,
+})
 
 const {success, fail} = auth.constants
-export default (state = {}, action)=>{
 
+export default (state = defaultState, action)=>{
   switch (action.type) {
     case success.verify:
-      store.save( 'auth', JSON.stringify(action.payload.value) )
-      return action.payload.value
-      break
-    case 'GET_AUTH':
-      return store.get('auth')
+      return state.merge({
+        errors:{},
+        login:true,
+      })
+      //store.save( 'auth', JSON.stringify(action.payload.value) )
+      //return action.payload.value
       break
     case fail.verify:
-      action.payload.extra.reject(action.payload.value)
-      return {}
+      return state.merge({
+        errors: action.payload.value,
+        loging: false,
+      })
+      break
+    case 'GET_AUTH':
+      return state.merge({
+        errors:{},
+        login:true?true:false,
+      })
       break
     case 'LOGOUT_AUTH':
-      store.delete('auth')
-      return {}
+      return defaultState
       break
     default:
       return state

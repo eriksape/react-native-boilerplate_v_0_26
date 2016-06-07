@@ -1,62 +1,48 @@
 import React from 'react'
 import {
+  Alert,
   Text,
   View,
   TextInput,
 } from 'react-native'
 import {reduxForm} from 'redux-form'
+import Button from 'apsl-react-native-button'
 
-import layoutStyles from '../../ui/styles/layout'
-import typographyStyles from '../../ui/styles/typography'
-import formStyles from '../../ui/styles/form'
-import buttonStyles from '../../ui/styles/button'
-import Button from '../../ui/components/Button'
+import styles from './../styles'
 
-import authActions from './../../../reducers/auth/authActions'
 const validate = values => {
   const errors = {}
 
   return errors
 }
 
-
-const submit = (values, dispatch) => {
-  return new Promise((resolve, reject) => {
-    dispatch(authActions.verify({
-    body:values,
-    extra:{reject:reject,resolve:resolve}
-  }))})
-
-}
-
 class LoginForm extends React.Component {
-
   render() {
-    const {fields: {email, password},  handleSubmit, submitting} = this.props
+    const {fields: {email, password},  handleSubmit, submitting, auth} = this.props
     const errors =  {}
     const errorMsg = process.env.NODE_ENV === 'production' ? 'Uh oh, something went wrong' : (errors.login || '').toString()
 
     return (
-      <View style={layoutStyles.container}>
-        <Text style={typographyStyles.h1}>
+      <View style={styles.container}>
+        <Text style={styles.h1}>
           login
         </Text>
         <TextInput
-          style={formStyles.textInput}
+          style={styles.textInput}
           placeholder="email"
           // onChangeText={(email) => this.setState({email})}
           // value={this.state.email}
           {...email}
         />
         <TextInput
-          style={formStyles.textInput}
+          style={styles.textInput}
           placeholder="password"
           // onChangeText={(password) => this.setState({password})}
           // value={this.state.password}
           {...password}
         />
-        {errors.login && <Text>{errorMsg}</Text>}
-        <Button onPress={handleSubmit(submit)} style={buttonStyles.button}>
+        {auth.get('errors').size > 0 && Alert.alert( auth.get('errors').get('title') , auth.get('errors').get('message') ) }
+        <Button onPress={handleSubmit} disabledStyle={styles.button_disabled} textStyle={styles.button} activeOpacity={1} style={{borderWidth:0}} >
           Login
         </Button>
       </View>
@@ -65,10 +51,10 @@ class LoginForm extends React.Component {
 }
 
 LoginForm.propTypes = {
-  //auth: React.PropTypes.object,
+  auth: React.PropTypes.object,
   fields: React.PropTypes.object.isRequired,
-  formStyles: React.PropTypes.object,
-  buttonStyles: React.PropTypes.object,
+  //formStyles: React.PropTypes.object,
+  //buttonStyles: React.PropTypes.object,
 
   handleSubmit: React.PropTypes.func.isRequired,
   submitting: React.PropTypes.bool.isRequired
@@ -78,4 +64,5 @@ export default reduxForm({
   form: 'login',
   validate,
   fields: ['email', 'password'],
-})(LoginForm)
+}
+)(LoginForm)

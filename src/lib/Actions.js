@@ -3,7 +3,6 @@ import pathToRegexp from 'path-to-regexp'
 //import fetch from 'isomorphic-fetch'
 
 const checkStatus = response => {
-  debugger
   if (response.status >= 200 && response.status < 300) {
     return response
   } else {
@@ -11,22 +10,19 @@ const checkStatus = response => {
   }
 }
 
-const createResponse = response =>
+const createResponse = (response, type='success' ) =>
   deserialize(response).then(value => ({
     url: response.url,
     status: response.status,
     statusText: response.statusText,
     headers: response.headers,
     value: value,
-    type: ((response.status >= 200 && response.status < 300)?true:false)
+    type: type
   }))
 
 
 const createErrorResponse = response =>
-  createResponse(response).then( response => {
-    throw response
-  })
-
+  createResponse(response, 'fail').then( response => response )
 
 const deserialize = response => {
   const header = response.headers.get('Content-Type') || ''
@@ -66,9 +62,8 @@ class abstractActions {
   }
 
   createRequest(){
-    debugger;
     const method               = arguments[0]
-    const config               = arguments[1]  || { body:{}, extra:{} }
+    const config               = arguments[1]  || { body:{} }
     const {location, options}  = this
     const {uri, success, fail} = method
     let url                    = pathToRegexp.compile(method.uri)(config.pathKeys)
@@ -80,16 +75,15 @@ class abstractActions {
     return dispatch => fetch(location+url, options)
       .then( checkStatus )
       .then(createResponse, createErrorResponse)
-      .then( value => dispatch({ payload:{value:value.value, extra:config.extra, body:(_.isEqual(options.method,'delete')?config.pathKeys:config.body)}, type:value.type?success:fail }) )
-      //.catch( value => dispatch({ payload:{value:value.value, extra:config.extra, body:config.body}, type:value.type?success:fail }) )
-      // .then(  response => response.json()
-      //         .then( value => dispatch({ payload:{value, extra:config.extra, body:config.body}, type:success }) )
-      // )
-      // .catch( response => response.json()
-      //         .then( value => dispatch({ payload:{value, extra:config.extra, body:config.body, url:location+url}, type:fail}) )
-      // )
+      .then( value => dispatch({
+        payload:{
+          value:value.value,
+          pathKeys:config.pathKeys
+        },
+        type: (_.isEqual('success',value.type)?success:fail)
+      })
+    )
   }
-
 }
 
 export default class actions extends abstractActions{
