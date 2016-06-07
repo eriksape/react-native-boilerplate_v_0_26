@@ -145,6 +145,7 @@ export default function native(platform) {
       	    <Scene key="root">
       	      <Scene key="firstScreen" component={firstScreen} title="firstScreen" initial={true}></Scene>
               <Scene key="Login" component={Login} title="Login"></Scene>
+              <Scene key="Loged" component={firstScreen} text="user loged" title="Loged"></Scene>
       	    </Scene>
       	  </Router>
         </Provider>

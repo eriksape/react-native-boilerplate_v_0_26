@@ -18,7 +18,7 @@ const validate = values => {
 
 class LoginForm extends React.Component {
   render() {
-    const {fields: {email, password},  handleSubmit, submitting, auth} = this.props
+    const {fields: {email, password},  handleSubmit, submitting, auth, hideAlert} = this.props
     const errors =  {}
     const errorMsg = process.env.NODE_ENV === 'production' ? 'Uh oh, something went wrong' : (errors.login || '').toString()
 
@@ -41,7 +41,7 @@ class LoginForm extends React.Component {
           // value={this.state.password}
           {...password}
         />
-        {auth.get('errors').size > 0 && Alert.alert( auth.get('errors').get('title') , auth.get('errors').get('message') ) }
+        {auth.get('errors').size > 0 && Alert.alert( auth.get('errors').get('title') , auth.get('errors').get('message'), [{ onPress: () => hideAlert() }] ) }
         <Button onPress={handleSubmit} disabledStyle={styles.button_disabled} textStyle={styles.button} activeOpacity={1} style={{borderWidth:0}} >
           Login
         </Button>

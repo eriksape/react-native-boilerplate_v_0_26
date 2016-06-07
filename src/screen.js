@@ -40,14 +40,22 @@ const App = React.createClass({
    *
    */
   componentDidMount() {
-    Actions.Login()
+    const { auth } = this.props
+    if(!auth.get('login')) Actions.Login()
     //this.props.actions.getSessionToken()
   },
 
+  getDefaultProps(){
+    return {
+      text:'App Startup Screen'
+    }
+  },
+
   render() {
+    const { text } = this.props
     return(
       <View style={ styles.container }>
-        <Text style={ styles.summary }>App Startup Screen</Text>
+        <Text style={ styles.summary }> { text } </Text>
       </View>
     )
   }
@@ -56,4 +64,6 @@ const App = React.createClass({
 /**
  * Connect the properties
  */
-export default connect()(App)
+export default connect(
+  state => ({ auth: state.auth })
+)(App)

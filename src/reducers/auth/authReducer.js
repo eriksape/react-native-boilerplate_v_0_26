@@ -6,7 +6,7 @@ import store from 'react-native-simple-store'
 
 const defaultState = fromJS({
   errors: {},
-  loging: false,
+  login: false,
 })
 
 const {success, fail} = auth.constants
@@ -24,7 +24,13 @@ export default (state = defaultState, action)=>{
     case fail.verify:
       return state.merge({
         errors: action.payload.value,
-        loging: false,
+        login: false,
+      })
+      break
+    case 'auth_RESET_LOGIN':
+      return state.merge({
+        errors: {},
+        login: false,
       })
       break
     case 'GET_AUTH':
